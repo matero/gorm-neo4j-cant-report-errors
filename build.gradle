@@ -34,7 +34,6 @@ dependencies {
     compile "org.grails:grails-logging"
     compile "org.grails:grails-plugin-rest"
     compile "org.grails:grails-plugin-databinding"
-    compile "org.grails:grails-plugin-i18n"
     compile "org.grails:grails-plugin-services"
     compile "org.grails:grails-plugin-url-mappings"
     compile "org.grails:grails-plugin-interceptors"
@@ -46,7 +45,6 @@ dependencies {
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
-    runtime "com.h2database:h2"
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.8"
 
@@ -55,11 +53,6 @@ dependencies {
     compile "org.grails.plugins:neo4j:6.2.0.BUILD-SNAPSHOT"
 
     testCompile "org.grails:grails-gorm-testing-support"
-    testCompile "org.grails:grails-web-testing-support"
-    testCompile "org.grails.plugins:geb:1.1.2"
-    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 }
 
 bootRun {
