@@ -50,10 +50,9 @@ dependencies {
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.8"
 
-    compile "org.grails:gorm-neo4j-spring-boot:$grailsNeo4jPluginVersion"
-    compile "org.grails.plugins:neo4j:$grailsNeo4jPluginVersion", {
-        exclude group: 'org.grails', module: 'grails-datastore-gorm-grails2-support'
-    }
+    compile "org.neo4j:neo4j:3.3.5"
+    compile "org.grails:gorm-neo4j-spring-boot:6.2.0.BUILD-SNAPSHOT"
+    compile "org.grails.plugins:neo4j:6.2.0.BUILD-SNAPSHOT"
 
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails:grails-web-testing-support"
@@ -61,7 +60,6 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
-    testRuntime "org.neo4j.test:neo4j-harness:3.3.3"
 }
 
 bootRun {
@@ -81,4 +79,14 @@ tasks.withType(Test) {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+integrationTest {
+    delete fileTree(dir: "data")
+    systemProperties = System.properties
+    jvmArgs = ['-server', '-Xms4g', '-Xmx8g', '-Dspring.output.ansi.enabled=always', '-Dgrails.env=test']
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
+    }
 }
